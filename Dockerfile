@@ -12,12 +12,12 @@ RUN \
   pip3 install --upgrade pip && \
   pip3 install gunicorn httpbin && \
   echo '#!/bin/bash' > run.sh && \
-  echo 'exec gunicorn --bind=0.0.0.0:8000 httpbin:app' >> run.sh && \
+  echo 'exec gunicorn --bind=0.0.0.0:8080 httpbin:app' >> run.sh && \
   chmod +x run.sh && \
   apt-get remove --purge build-essential python3-dev -y && \
   apt-get autoremove -y && \
   rm -rf /var/lib/apt/lists/*
   
-EXPOSE 8000
+EXPOSE 8080
   
 CMD ["./run.sh"]
